@@ -2,11 +2,11 @@
 
 Configurar Nombre que salen en los commits
 ```ssh
-	git config --global user.name "dasdo"
+	git config --global user.name "testNombre"
 ```
 Configurar Email
 ```ssh	
-	git config --global user.email dasdo1@gmail.com
+	git config --global user.email testMail@mail.com
 ```
 Marco de colores para los comando
 ```ssh
@@ -19,7 +19,7 @@ Iniciamos GIT en la carpeta donde esta el proyecto
 ```ssh
 	git init
 ```
-Clonamos el repositorio de github o bitbucket
+Clonamos el repositorio de github
 ```ssh
 	git clone <url>
 ```
@@ -39,11 +39,11 @@ subimos al repositorio
 ## GIT CLONE
 
 
-Clonamos el repositorio de github o bitbucket
+Clonamos el repositorio de github
 ```ssh
 	git clone <url>
 ```
-Clonamos el repositorio de github o bitbucket ?????
+Clonamos el repositorio de github
 ```ssh
 	git clone <url> git-demo
 ```
