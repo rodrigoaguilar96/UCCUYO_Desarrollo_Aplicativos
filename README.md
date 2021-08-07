@@ -35,6 +35,10 @@ git config --global user.email "Tu correo"
     "#C497D4"
 ],
 ```
+
+### LiveServer 
+[LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+
 ### Tema VSCode:
 * [Monokai Night](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-monokai-night)
 
