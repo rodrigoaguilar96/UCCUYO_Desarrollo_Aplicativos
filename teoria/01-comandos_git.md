@@ -19,7 +19,7 @@ Iniciamos GIT en la carpeta donde esta el proyecto
 ```ssh
 	git init
 ```
-Clonamos el repositorio de github
+Clonamos el repositorio de github (Si no fue inicializado anteriormente, tener en cuenta no clonar un repositorio dentro de un proyecto ya inicializado)
 ```ssh
 	git clone <url>
 ```
