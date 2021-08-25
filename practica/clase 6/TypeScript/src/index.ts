@@ -1,111 +1,92 @@
-
+import {Direccion, Persona, Heroe} from "./ejercicios/Direccion";
 
 console.log('Hola Mundo!');
 
 /*
     ===== Código de TypeScript =====
 */
-interface Reproductor {
-    volumen: number;
-    segundo: number;
-    cancion: string;
-    detalle: Detalle;
-}
-interface Detalle {
-    autor: string;
-    anio?: number;
-}
-const reproductor: Reproductor = {
-    volumen: 90,
-    segundo: 30,
-    cancion: "Loca",
-    detalle: {
-        autor: "Duki"
-    }
-};
-const {volumen, segundo, detalle } = reproductor;
-const {autor: autorDetalle} = detalle
-//O
-//const {volumen, segundo, detalle:{autor} } = reproductor;
-console.log(reproductor.volumen);
-console.log(volumen + segundo + autorDetalle);
 
-const personajes: string[] = ["batman", "superman", "flash"];
-const [p1, superman, flash] = personajes;
-const [ , , p3] = personajes;
-console.log("Personaje 1" + personajes[0]);
-console.log("Personaje 1" + p1 );
-console.log("Personaje 3" + p3 + "es igual a" + flash +"==" + personajes[3]);
+function sumar (a: number, b: number): number {
+    return a+b;
+}
 
-export interface Producto {
+console.log(sumar(2,2))
+
+const sumarArrow = (a:number, b:number) :number => {
+    return a + b;
+}
+
+console.log(sumarArrow(2,3))
+
+function multiplicar (numero1: number, numero2?:number, numero3:number= 2):number {
+    return numero1 *numero3;
+}
+
+console.log(multiplicar(1,0, 5))
+
+
+
+let arreglosPersona: Persona[] = [];
+
+function agregarPersonas (persona:Persona):void {
+    arreglosPersona.push(persona);
+}
+
+const personajes: string[] = ["batman", "superman", "flash"]
+
+const [ ,  ,flash1234] = personajes;
+
+console.log(flash1234)
+
+interface Producto {
     desc: string;
     precio: number;
 }
 
-const tel: Producto = {
-    desc: "Samsung S21",
+const  telefono: Producto = {
+    desc: "Iphone",
     precio: 1000
 }
 
-const tablet: Producto = {
-    desc: "iPad",
-    precio: 1000
+const notebook: Producto = {
+    desc:"Dell",
+    precio: 1500
 }
-const articulos: Producto[] = [tel,tablet];
+
+let arrProductos: Producto[] = [telefono, notebook];
 
 function calculaIntereses(productos: Producto[]): number {
     let total = 0;
-    productos.forEach((producto) => {
-        total += producto.precio
+    productos.forEach((productos) => {
+        console.log(productos.desc)
+        total += productos.precio
     })
     return total * 0.15;
 }
-function calculaInteresesDesestructurados(productos: Producto[]): number {
+
+function calculaInteresesConPrecio(productos: Producto[]): number {
     let total = 0;
-    productos.forEach(({precio}) => {
-        total += precio
+    productos.map(({precio, desc}) => {
+        console.log(desc)
+        total += precio;
     })
     return total * 0.15;
 }
 
-console.log(calculaIntereses(articulos));
-console.log(calculaInteresesDesestructurados(articulos));
+console.log(calculaIntereses(arrProductos) + "con parametros:" + calculaInteresesConPrecio(arrProductos));
 
-class PersonaNormal {
-    constructor(
-        public nombre: string,
-        public direccion?: string
-    ) {}
-}
+let dire = new Direccion("San martin", "San Juan");
+let IronMan: Heroe = new Heroe("Iron Man", "Stark", 30, "Tony", new Direccion("",""))
+IronMan.setPoder(100);
 
-class Heroe extends PersonaNormal{
-    constructor(
-        public alterEgo: string,
-        public edad: number,
-        nombre) {
-        super(nombre);
-    }
-    imprimirNombre() {
-        return this.alterEgo + '' + this.nombre;
-    }
-}
+let personas: Persona[] = [];
 
-const ironMan = new Heroe("Iron Man", 30, "Tony Stark");
-console.log(ironMan.imprimirNombre())
-console.log(ironMan)
+personas.push(IronMan);
+personas.push(new Persona("Rodrigo", "Aguilar",dire))
+IronMan.imprimirNombre();
 
-function queTipoSoy<T>(argument: T) {
-    return argument
-}
-let soyString = queTipoSoy("Hola Mundo")
-let soyNumero = queTipoSoy(200)
-let soyArreglo = queTipoSoy([1, 2, 3, 4])
-let soyExplicito = queTipoSoy<number>(200);
-
-class MiSuperClase {
-    public miPropiedad: string = "ABC1234";
-    imprimir() {
-        console.log("Hola mundo")
-    }
-}
-
+personas.map(persona => {
+    persona.imprimirNombre();
+    persona.imprimirPoder()
+    console.log(persona.getDireccion());
+})
