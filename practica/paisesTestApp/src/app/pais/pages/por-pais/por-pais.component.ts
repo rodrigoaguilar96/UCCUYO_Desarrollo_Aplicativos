@@ -12,11 +12,13 @@ export class PorPaisComponent implements OnInit {
   termino: string = '';
   hayError: boolean = false;
   paises: Pais[] = [];
+  paisesSugeridos: Pais[] = [];
   constructor(private paisService: PaisService) { }
 
   buscar(termino: string) {
     this.hayError = false;
     this.termino = termino;
+    this.paisesSugeridos = [];
     this.paisService.buscarPais(termino).subscribe(resp => {
       console.log(resp)
       this.paises = resp;
@@ -29,7 +31,12 @@ export class PorPaisComponent implements OnInit {
 
   sugerencias(termino: string ) {
     this.hayError = false;
-    //TODO crear sugerencias para usar el debounce proxima clase
+    this.termino = termino;
+    this.paisService.buscarPais(termino)
+      .subscribe(
+        paises => this.paisesSugeridos = paises.splice(0,4),
+        (error => this.paisesSugeridos = [])
+      )
   }
   ngOnInit(): void {
   }
