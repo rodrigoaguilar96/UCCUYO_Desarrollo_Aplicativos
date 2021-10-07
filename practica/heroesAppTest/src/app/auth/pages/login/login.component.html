@@ -1,1 +1,25 @@
-<p>login works!</p>
+
+ <div class="container-fluid p-0">
+   <div class="row col-12 p-0 viewPortLogin m-0 login">
+     <div class="col-12 col-md-8 col-lg-5 text-center formularioLogin p-4 box-shadow-login rounded-lg">
+       <img src="https://i1.wp.com/eltallerdehector.com/wp-content/uploads/2021/07/logo-de-batman-png-free.png?w=700&ssl=1" width="200">
+       <p class="">Login</p>
+       <hr class="mb-3">
+       <form [formGroup]="form" autocomplete="off">
+         <div class="form-group">
+           <label>Usuario</label>
+           <input formControlName="user" #usuario type="text" class="form-control" id="usuario" aria-describedby="emailHelp"
+                  placeholder="Ingrese su usuario" required>
+         </div>
+         <div class="form-group">
+           <input type="password" formControlName="password" #password class="form-control" id="password" placeholder="Ingrese su contraseña"
+                  required>
+         </div>
+         <!--  <p class="text-danger-login rounded">{{mensajeError}}</p> -->
+         <button [disabled]="!form.valid" (click)="login()"
+                 type="submit" class="btn-iniciar-sesion btn btn-warning btn-lg btn-block mb-4 mt-4 color-white">INICIAR SESION</button>
+       </form>
+     </div>
+   </div>
+ </div>
+

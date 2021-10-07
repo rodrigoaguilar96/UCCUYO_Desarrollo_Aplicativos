@@ -5,6 +5,8 @@ import {AgregarComponent} from "./pages/agregar/agregar.component";
 import {BuscarComponent} from "./pages/buscar/buscar.component";
 import {HeroeComponent} from "./pages/heroe/heroe.component";
 import {HomeComponent} from "./pages/home/home.component";
+import {LoginGuard} from "../shared/guards/LoginGuard";
+import {AdminGuard} from "../shared/guards/AdminGuard";
 
 const routes: Routes = [
   {
@@ -13,7 +15,8 @@ const routes: Routes = [
     children: [
       {
         path: 'agregar',
-        component: AgregarComponent
+        component: AgregarComponent,
+        canActivate: [LoginGuard, AdminGuard]
       },
       {
         path: 'buscar',
@@ -35,6 +38,10 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    LoginGuard,
+    AdminGuard
   ]
 })
 export class HeroesRoutingModule { }

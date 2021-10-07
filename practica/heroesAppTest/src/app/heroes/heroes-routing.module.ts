@@ -6,11 +6,14 @@ import {AgregarComponent} from "./pages/agregar/agregar.component";
 import {BuscarComponent} from "./pages/buscar/buscar.component";
 import {HeroeComponent} from "./pages/heroe/heroe.component";
 import {HomeComponent} from "./pages/home/home.component";
+import {LoginGuard} from "../shared/guards/LoginGuard";
+import {NoLoginGuard} from "../shared/guards/NoLoginGuard";
 
 const routes: Routes = [
   {
    path: '',
     component: HomeComponent,
+  canActivate: [NoLoginGuard],
    children: [
      {
       path: 'listado',
@@ -48,6 +51,9 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    NoLoginGuard
   ]
 })
 export class HeroesRoutingModule { }
